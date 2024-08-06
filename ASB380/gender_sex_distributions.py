@@ -45,6 +45,10 @@ group_data_df = pd.concat(group_data)
 filtered_combined_data = combined_data[combined_data['URL'].isin(group_data_df['URL'])]
 result = pd.merge(filtered_combined_data, group_data_df[['URL', 'Group']], on='URL', how='inner')
 result['Group'] = result['Group'].map(group_mapping)
+
+# grouped_results = pd.read_csv('path/to/where/you/saved/the/file/named/grouped_results.csv')
+# result = grouped_results.copy()
+
 result = result[result['Group'].isin(['hair care', 'deodorants'])]
 
 # print(result['Group'].unique())
